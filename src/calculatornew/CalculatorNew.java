@@ -30,11 +30,11 @@ public class CalculatorNew {
     public CalculatorNew() {
         JFrame mainFrame = new JFrame("Калькулятор");
         mainFrame.setSize(300, 300);
+        mainFrame.setResizable(false);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel mainPanel = new JPanel(new BorderLayout(3, 3));
         lblResult = new JButton("");
-//        lblResult.setEnabled(false);
         lblResult.setActionCommand("clear");
         lblResult.addActionListener(new ActionE());
 
