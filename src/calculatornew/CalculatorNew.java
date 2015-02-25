@@ -2,6 +2,7 @@ package calculatornew;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,19 +16,20 @@ public class CalculatorNew {
     private final JPanel pnlButtons;
     private double a, b;
     private String znak;
+    private final ActionE btnAction;
+    private final ActionE btnDigit;
+    private final JButton lblResult;
+    private boolean start = true;
+    private final ActionE btnResult;
 
     public static void main(String[] args) {
 
         CalculatorNew calc = new CalculatorNew();
 
     }
-    private final ActionE btnAction;
-    private final ActionE btnDigit;
-    private JButton lblResult;
-    private boolean start = true;
-    private final ActionE btnResult;
 
     public CalculatorNew() {
+
         JFrame mainFrame = new JFrame("Калькулятор");
         mainFrame.setSize(300, 300);
         mainFrame.setResizable(false);
@@ -37,6 +39,7 @@ public class CalculatorNew {
         lblResult = new JButton("");
         lblResult.setActionCommand("clear");
         lblResult.addActionListener(new ActionE());
+        lblResult.setFont(new Font("Segoe UI", 3, 20));
 
         lblResult.setPreferredSize(new Dimension(300, 50));
         mainPanel.add(lblResult, BorderLayout.NORTH);
@@ -67,11 +70,12 @@ public class CalculatorNew {
     private void addButton(String name, ActionE action) {
 
         JButton btn = new JButton(name);
+        btn.setFont(new Font("Segoe UI", 1, 20));
         btn.addActionListener(action);
+        
         if (action == btnDigit) {
             btn.setActionCommand("digit");
             pnlButtons.add(btn);
-
         } else if (action == btnAction) {
             btn.setActionCommand("action");
             pnlButtons2.add(btn);
@@ -102,7 +106,7 @@ public class CalculatorNew {
                         lblResult.setText(lblResult.getText() + btn.getText());
                         break;
                     case "action":
-                        if (lblResult.getText().isEmpty()) {
+                        if (lblResult.getText().isEmpty() || lblResult.getText().equals(".")) {
                             a = 0.0;
                         } else {
                             a = Double.parseDouble(lblResult.getText());
@@ -125,7 +129,7 @@ public class CalculatorNew {
                         lblResult.setText("");
                         break;
                     case "result":
-                        if (lblResult.getText().isEmpty()) {
+                        if (lblResult.getText().isEmpty() || lblResult.getText().equals(".")) {
                             b = 0.0;
                         } else {
                             b = Double.parseDouble(lblResult.getText());
