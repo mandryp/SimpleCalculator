@@ -1,4 +1,4 @@
-package calculatornew;
+package simplecalculator;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -6,16 +6,18 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 /**
  * Simple Calculator. Only basic operations. One of firsts my projects.
  *
  * @author mandry
  */
-public class CalculatorNew {
+public class SimpleCalculator {
 
     private final JPanel pnlButtons2;
     private final JPanel pnlButtons;
@@ -28,20 +30,20 @@ public class CalculatorNew {
     private final ActionE btnResult;
 
     /**
-     * main void. Create object of class CalculatorNew
+     * main void. Create object of class SimpleCalculator
      *
      * @param args
      */
     public static void main(String[] args) {
 
-        CalculatorNew calc = new CalculatorNew();
+        SimpleCalculator calc = new SimpleCalculator();
 
     }
 
     /**
      * Constructor
      */
-    public CalculatorNew() {
+    public SimpleCalculator() {
 
         //create frame 300x300
         JFrame mainFrame = new JFrame("Калькулятор");
@@ -95,7 +97,7 @@ public class CalculatorNew {
         JButton btn = new JButton(name);
         btn.setFont(new Font("Segoe UI", 1, 20));
         btn.addActionListener(action);
-
+        
         if (action == btnDigit) {
             btn.setActionCommand("digit");
             pnlButtons.add(btn);
